@@ -34,20 +34,29 @@ export default function Navbar() {
       {/* ── TOP : Logo centré + Contact ─────────────── */}
       <div className={styles.topSection}>
 
-        {/* Logo — centré sur desktop, gauche sur mobile */}
-        <a href="#" className={styles.logoLink}>
-          <Image
-            src="/logo.png"
-            alt="BMZ ELEC"
-            width={420}
-            height={162}
-            style={{ objectFit: "contain", display: "block" }}
-            priority
-            sizes="(max-width: 768px) 180px, 320px"
-          />
-        </a>
+        {/* Logo row : logo centré + burger à droite (mobile) */}
+        <div className={styles.logoRow}>
+          <a href="#" className={styles.logoLink}>
+            <Image
+              src="/logo.png"
+              alt="BMZ ELEC"
+              width={420}
+              height={162}
+              style={{ objectFit: "contain", display: "block", maxWidth: "100%", height: "auto" }}
+              priority
+              sizes="(max-width: 768px) 160px, 320px"
+            />
+          </a>
+          <button
+            className={styles.burger}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
+            {menuOpen ? <X size={22} strokeWidth={2} /> : <Menu size={22} strokeWidth={2} />}
+          </button>
+        </div>
 
-        {/* Infos contact — masquées sur mobile */}
+        {/* Infos contact — desktop */}
         <div className={styles.topInfoRow}>
           <div className={styles.infoItem}>
             <MapPin size={18} strokeWidth={1.8} className={styles.infoIcon} />
@@ -65,14 +74,23 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Burger — visible uniquement sur mobile */}
-        <button
-          className={styles.burger}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-        >
-          {menuOpen ? <X size={24} strokeWidth={2} /> : <Menu size={24} strokeWidth={2} />}
-        </button>
+        {/* Infos contact — mobile uniquement */}
+        <div className={styles.mobileTopInfo}>
+          <div className={styles.mobileInfoItem}>
+            <MapPin size={13} strokeWidth={1.8} className={styles.infoIcon} />
+            <span>Région Auvergne-Rhône-Alpes</span>
+          </div>
+          <div className={styles.mobileInfoItem}>
+            <Mail size={13} strokeWidth={1.8} className={styles.infoIcon} />
+            <a href={"mailto:" + siteConfig.email}>{siteConfig.email}</a>
+          </div>
+          <div className={styles.mobileInfoItem}>
+            <Phone size={13} strokeWidth={1.8} className={styles.infoIcon} />
+            <a href={"tel:" + siteConfig.phone} className={styles.mobilePhoneLink}>
+              {siteConfig.phone}
+            </a>
+          </div>
+        </div>
 
       </div>
 
@@ -148,26 +166,15 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.22 }}
           >
-            {/* Coordonnées rapides */}
-            <div className={styles.mobileContact}>
-              <a href={"tel:" + siteConfig.phone} className={styles.mobilePhone}>
-                <Phone size={16} strokeWidth={2} />
-                {siteConfig.phone}
-              </a>
-                <a href={"mailto:" + siteConfig.email} className={styles.mobilePhone}>
-                <Mail size={16} strokeWidth={2} />
-                {siteConfig.email}
-              </a>
-            </div>
 
             <div className={styles.mobileDivider} />
 
             {/* Navigation */}
-            <a href="#about" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+            <a href="#about" className={`${styles.mobileLink} ${styles.mobileLinkOrange}`} onClick={() => setMenuOpen(false)}>
               À propos
             </a>
 
-            <div className={styles.mobileLink}>Nos services</div>
+            <div className={`${styles.mobileLink} ${styles.mobileLinkOrange}`}>Nos services</div>
             {services.map((service, i) => {
               const Icon = SERVICE_ICONS[i]
               return (
@@ -183,7 +190,7 @@ export default function Navbar() {
               )
             })}
 
-            <a href="#contact" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+            <a href="#contact" className={`${styles.mobileLink} ${styles.mobileLinkOrange}`} onClick={() => setMenuOpen(false)}>
               Contact
             </a>
 
