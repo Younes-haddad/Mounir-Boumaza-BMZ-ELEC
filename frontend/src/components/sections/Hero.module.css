@@ -1,0 +1,326 @@
+/* ─── HERO FULL-BLEED ────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* Fond riche si la photo ne charge pas */
+  background: #f6f6f7;
+}
+
+/* ─── PHOTO DE FOND ──────────────────────────────── */
+.photoBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Dégradé : opaque à gauche (lisibilité), transparent à droite (photo visible) */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      108deg,
+      rgba(10, 26, 64, 0.97) 0%,
+      rgba(10, 26, 64, 0.88) 30%,
+      rgba(10, 26, 64, 0.55) 58%,
+      rgba(10, 26, 64, 0.12) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(10, 26, 64, 0.70) 0%,
+      transparent 38%
+    );
+}
+
+/* ─── ACCENTS ────────────────────────────────────── */
+/* Barre orange verticale gauche */
+.accentBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--orange);
+  z-index: 4;
+}
+
+/* Trait orange bas */
+.bottomLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--orange);
+  z-index: 4;
+}
+
+/* ─── CONTENU ────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 80px 100px 80px;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  color: var(--orange);
+  font-size: 0.68rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 700;
+  border-left: 3px solid var(--orange);
+  padding-left: 14px;
+}
+
+/* ─── TITRE ──────────────────────────────────────── */
+.title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+  line-height: 1;
+}
+
+.titleLight {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.titleBig {
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 12px;
+}
+
+.titleAccent {
+  font-size: clamp(0.85rem, 1.6vw, 1.3rem);
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+/* ─── DESC ───────────────────────────────────────── */
+.desc {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: rgba(220, 230, 255, 0.55);
+  max-width: 460px;
+  margin-bottom: 44px;
+}
+
+/* ─── CTA ────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 52px;
+}
+
+.btnPrimary {
+  background: var(--orange);
+  color: #ffffff;
+  padding: 16px 38px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.btnPrimary:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.22s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+
+.btnSecondary:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* ─── STATS ──────────────────────────────────────── */
+.statsRow {
+  display: flex;
+  align-items: flex-start;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 30px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  padding-right: 30px;
+  margin-right: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.statNum {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+/* ─── BADGE CERT FLOTTANT ────────────────────────── */
+.certBadge {
+  position: absolute;
+  bottom: 56px;
+  right: 60px;
+  z-index: 3;
+  text-align: center;
+  border: 1px solid rgba(249, 115, 22, 0.45);
+  border-top: 3px solid var(--orange);
+  padding: 16px 32px;
+  background: rgba(10, 26, 64, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.certLine {
+  display: block;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 4px;
+}
+
+.certSub {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-top: 5px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 1200px) {
+  .content {
+    max-width: 580px;
+    padding: 80px 60px 100px 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    max-width: 100%;
+    padding: 80px 48px 100px 48px;
+  }
+
+  .overlay {
+    background: rgba(10, 26, 64, 0.82);
+  }
+
+  .accentBar {
+    top: 0;
+    width: 100%;
+    height: 5px;
+    bottom: auto;
+  }
+
+  .certBadge {
+    bottom: 44px;
+    right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    align-items: flex-end;
+    padding-bottom: 0;
+  }
+
+  .overlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(10, 26, 64, 0.60) 0%,
+        rgba(10, 26, 64, 0.85) 50%,
+        rgba(10, 26, 64, 0.96) 100%
+      );
+  }
+
+  .accentBar {
+    width: 100%;
+    height: 4px;
+    top: 0;
+    bottom: auto;
+  }
+
+  .content {
+    padding: 60px 24px 56px 24px;
+    max-width: 100%;
+  }
+
+  .statsRow {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .stat {
+    padding-right: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .certBadge {
+    display: none;
+  }
+
+  .bottomLine {
+    display: none;
+  }
+}
