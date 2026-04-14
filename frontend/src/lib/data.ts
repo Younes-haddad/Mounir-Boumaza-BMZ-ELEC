@@ -89,3 +89,27 @@ export const faqs = [
     answer: "Absolument. Tous les travaux sont réalisés conformément à la norme NF C 15-100 pour garantir votre sécurité.",
   },
 ]
+
+export const testimonials = [
+  {
+    id: 1,
+    name: "Jean Dupont",
+    rating: 5,
+    comment: "Travail sérieux et rapide, je recommande !",
+    location: "Lyon",
+  },
+  {
+    id: 2,
+    name: "Marie Martin",
+    rating: 5,
+    comment: "Intervention rapide, très professionnel.",
+    location: "Villeurbanne",
+  },
+  {
+    id: 3,
+    name: "Pierre Bernard",
+    rating: 5,
+    comment: "Excellent travail, tarifs honnêtes.",
+    location: "Bron",
+  },
+]
