@@ -67,7 +67,7 @@ export default function Temoignages() {
               </div>
               <span className={styles.google}>G</span>
             </div>
-            <p className={styles.text}>&ldquo;{t.text}&rdquo;</p>
+            <p className={styles.text}>&ldquo;{t.comment}&rdquo;</p>
             <div className={styles.author}>
               <div className={styles.avatar}>
                 {t.name.charAt(0)}
